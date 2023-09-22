@@ -1,26 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Suspense, lazy } from 'react';
+import '.styles/spinner';
+import { CircularProgress } from '@mui/material';
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import JobProvider from './context/JobContext';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const LazyGalleryView = lazy(() => import('./views/galleryView'));
+const LazyDetailsView = lazy(() => import('./views/detailsView'));
+const LazyPageNotFound = lazy(() => import('./views/pageNotFound'));
+
+const App: React.FC = () => (
+  <Router>
+    <JobProvider>
+      <Suspense fallback={<div className='spinnerStyles'><CircularProgress /></div>}>
+        <Routes>
+          <Route path="/" element={<LazyGalleryView />} />
+          <Route path="/job-description" element={<LazyDetailsView />} />
+          <Route path="*" element={<LazyPageNotFound />} />
+        </Routes>
+      </Suspense>
+    </JobProvider>
+  </Router>
+)
 
 export default App;
