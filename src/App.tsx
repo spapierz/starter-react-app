@@ -6,7 +6,7 @@ import JobProvider from './context/JobContext';
 
 const LazyGalleryView = lazy(() => import('./views/galleryView'));
 const LazyDetailsView = lazy(() => import('./views/detailsView'));
-const LazyPageNotFound = lazy(() => import('./views/pageNotFound'));
+const LazyPageNotFound = lazy(() => import('./views/pageNotFoundView'));
 
 const App: React.FC = () => (
   <Router>
