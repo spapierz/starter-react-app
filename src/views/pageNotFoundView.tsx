@@ -1,6 +1,5 @@
 import React from 'react';
 import { Grid, Typography } from '@mui/material';
-import BackButton from '../components/BackButton';
 
 const PageNotFound: React.FC = () => {
   return (
@@ -18,7 +17,6 @@ const PageNotFound: React.FC = () => {
         <Grid item xs={12}>
           <Typography variant="h5" sx={{ mt: 3 }}>Page not found.</Typography>
         </Grid>
-        <BackButton />
       </Grid>
     </>
   );
