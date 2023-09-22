@@ -39,10 +39,6 @@ export const JobProvider = ({ children }: JobProviderProps) => {
     getJobs();
   }, []);
 
-  useEffect(() => {
-    jobs.map(job => console.log(job.location?.name))
-  }, [jobs])
-
   const value: JobContextType = {
     jobs,
   };
